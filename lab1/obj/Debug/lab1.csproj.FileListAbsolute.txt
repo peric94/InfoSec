@@ -7,3 +7,12 @@ C:\Users\Aleksandar\Desktop\InfoSec - lab\lab1\lab1\obj\Debug\lab1.csproj.Genera
 C:\Users\Aleksandar\Desktop\InfoSec - lab\lab1\lab1\obj\Debug\lab1.exe
 C:\Users\Aleksandar\Desktop\InfoSec - lab\lab1\lab1\obj\Debug\lab1.pdb
 C:\Users\Aleksandar\Desktop\InfoSec - lab\lab1\lab1\obj\Debug\lab1.Form1.resources
+C:\Users\Aleksandar\Documents\GitHub\InfoSec\lab1\bin\Debug\lab1.exe.config
+C:\Users\Aleksandar\Documents\GitHub\InfoSec\lab1\obj\Debug\lab1.exe
+C:\Users\Aleksandar\Documents\GitHub\InfoSec\lab1\obj\Debug\lab1.pdb
+C:\Users\Aleksandar\Documents\GitHub\InfoSec\lab1\bin\Debug\lab1.exe
+C:\Users\Aleksandar\Documents\GitHub\InfoSec\lab1\bin\Debug\lab1.pdb
+C:\Users\Aleksandar\Documents\GitHub\InfoSec\lab1\obj\Debug\lab1.csprojResolveAssemblyReference.cache
+C:\Users\Aleksandar\Documents\GitHub\InfoSec\lab1\obj\Debug\lab1.Form1.resources
+C:\Users\Aleksandar\Documents\GitHub\InfoSec\lab1\obj\Debug\lab1.Properties.Resources.resources
+C:\Users\Aleksandar\Documents\GitHub\InfoSec\lab1\obj\Debug\lab1.csproj.GenerateResource.Cache

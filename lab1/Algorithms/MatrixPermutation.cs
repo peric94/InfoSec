@@ -8,55 +8,11 @@ namespace lab1.Algorithms
 {
     class MatrixPermutation
     {
-        private char[][] mat;
-        private int n;
-        private int m;
-
-        private int[] iperm;
-        private int[] jperm;
-
-        public MatrixPermutation(int[] iperm, int[] jperm, char[][] mat)
+        public static char[][] rowPermutation(int[] rowPerm, int numberOfColumns, char[][] mat)
         {
-            this.iperm = iperm;
-            this.jperm = jperm;
-            this.mat = mat;
+            int n = rowPerm.Length;
+            int m = numberOfColumns;
 
-            n = this.iperm.Length;
-            m = this.jperm.Length;
-        }
-
-        public char[][] getMatrix()
-        {
-            return mat;
-        }
-
-        public void ipermOperation()
-        {
-            char[][] matClone = new char[n][];
-
-            for(int i = 0; i < n; i++)
-            {
-                matClone[i] = new char[m];
-            }
-
-            for(int i = 0; i < n; i++)
-            {
-                for(int j = 0; j < m; j++)
-                {
-                    matClone[i][j] = mat[i][j];
-                }
-            }
-
-            //nad mat cemo vrsiti permutacije pomocu ove kopije
-
-            for(int i = 0; i < n; i++)
-            {
-                mat[i] = matClone[iperm[i] - 1]; //ima -1 zbog toga sto su iperm i jperm indeksi od 1 pa na dalje
-            }
-        }
-
-        public void jpermOperation()
-        {
             char[][] matClone = new char[n][];
 
             for (int i = 0; i < n; i++)
@@ -72,19 +28,23 @@ namespace lab1.Algorithms
                 }
             }
 
-            //nad mat cemo vrsiti permutacije pomocu ove kopije
+            //GORE JE NAPRAVLJENA KOPIJA PROSLEDJENE MATRICE
 
-            for(int j = 0; j < m; j++)
+            for (int i = 0; i < n; i++)
             {
-                for(int i = 0; i < n; i++)
-                {
-                    mat[i][j] = matClone[i][jperm[j] - 1];
-                }
+                matClone[i] = mat[rowPerm[i] - 1];
             }
+
+            return matClone;
+
+            //IZNAD JE IZVRSENA PERMUTACIJA NAD VRSTAMA
         }
 
-        public void ipermInverseOperation()
+        public static char[][] columnPermutation(int numberOfRows, int[] columnPerm, char[][] mat)
         {
+            int n = numberOfRows;
+            int m = columnPerm.Length;
+
             char[][] matClone = new char[n][];
 
             for (int i = 0; i < n; i++)
@@ -100,40 +60,82 @@ namespace lab1.Algorithms
                 }
             }
 
-            //nad mat cemo vrsiti permutacije pomocu ove kopije
-
-            for (int i = 0; i < n; i++)
-            {
-                mat[iperm[i] - 1] = matClone[i]; //ima -1 zbog toga sto su iperm i jperm indeksi od 1 pa na dalje
-            }
-        }
-
-        public void jpermInverseOperation()
-        {
-            char[][] matClone = new char[n][];
-
-            for (int i = 0; i < n; i++)
-            {
-                matClone[i] = new char[m];
-            }
-
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < m; j++)
-                {
-                    matClone[i][j] = mat[i][j];
-                }
-            }
-
-            //nad mat cemo vrsiti permutacije pomocu ove kopije
+            //PERMUTACIJE NAD KOLONAMA:
 
             for (int j = 0; j < m; j++)
             {
                 for (int i = 0; i < n; i++)
                 {
-                    mat[i][jperm[j] - 1] = matClone[i][j];
+                    matClone[i][j] = mat[i][columnPerm[j] - 1];
                 }
             }
+
+            return matClone;
+        }
+
+        public static char[][] rowPermutationInverse(int[] rowPerm, int numberOfColumns, char[][] mat)
+        {
+            int n = rowPerm.Length;
+            int m = numberOfColumns;
+
+            char[][] matClone = new char[n][];
+
+            for (int i = 0; i < n; i++)
+            {
+                matClone[i] = new char[m];
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    matClone[i][j] = mat[i][j];
+                }
+            }
+
+            //GORE JE NAPRAVLJENA KOPIJA PROSLEDJENE MATRICE
+
+            for (int i = 0; i < n; i++)
+            {
+                matClone[rowPerm[i] - 1] = mat[i];
+            }
+
+            return matClone;
+
+            //IZNAD JE IZVRSENA INVERZNA PERMUTACIJA NAD VRSTAMA
+        }
+
+        public static char[][] columnPermutationInverse(int numberOfRows, int[] columnPerm, char[][] mat)
+        {
+            int n = numberOfRows;
+            int m = columnPerm.Length;
+
+            char[][] matClone = new char[n][];
+
+            for (int i = 0; i < n; i++)
+            {
+                matClone[i] = new char[m];
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    matClone[i][j] = mat[i][j];
+                }
+            }
+
+            //INVERZNE PERMUTACIJE NAD KOLONAMA:
+
+            for (int j = 0; j < m; j++)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    matClone[i][columnPerm[j] - 1] = mat[i][j];
+                }
+            }
+
+            return matClone;
         }
 
     }

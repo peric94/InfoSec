@@ -80,9 +80,9 @@ namespace lab1
 
         //functions for checking key
 
-        private bool checkKey()
+        private bool checkKeyDT()
         {
-            if(parseKey() == false)
+            if(parseKeyDT() == false)
             {
                 return false;
             }
@@ -126,7 +126,7 @@ namespace lab1
             return true;
         }
         
-        private bool parseKey()
+        private bool parseKeyDT()
         {
             string temp = textBoxKey.Text;
             string rowPerm;
@@ -140,8 +140,8 @@ namespace lab1
                     columnPerm = sr.ReadLine();
                 }
 
-                ipermKey = parseKey2(rowPerm);
-                jpermKey = parseKey2(columnPerm);
+                ipermKey = parseKeyDT2(rowPerm);
+                jpermKey = parseKeyDT2(columnPerm);
 
                 if(ipermKey == null || jpermKey == null)
                 {
@@ -159,8 +159,8 @@ namespace lab1
                     rowPerm = temp.Substring(0, i); //izdvajam sve pre ;
                     columnPerm = temp.Substring(i + 1); //izdvajam sve nakon ;
 
-                    ipermKey = parseKey2(rowPerm);
-                    jpermKey = parseKey2(columnPerm);
+                    ipermKey = parseKeyDT2(rowPerm);
+                    jpermKey = parseKeyDT2(columnPerm);
 
                     if (ipermKey == null || jpermKey == null)
                     {
@@ -176,7 +176,7 @@ namespace lab1
             }
         }
 
-        private int[] parseKey2(string textToParse)
+        private int[] parseKeyDT2(string textToParse)
         {
             char[] tempChar = textToParse.ToCharArray();
             string tempString = string.Empty;
@@ -247,7 +247,7 @@ namespace lab1
 
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBox.SelectedItem == "Double transposition")
+            if(comboBox.SelectedItem.ToString() == "Double transposition")
             {
                 labelKey.Visible = true;
                 textBoxKey.Visible = true;
@@ -261,9 +261,9 @@ namespace lab1
             {
                 stopped = false;
 
-                if (comboBox.SelectedItem == "Double transposition")
+                if (comboBox.SelectedItem.ToString() == "Double transposition")
                 {
-                    if (checkKey() == false) return;
+                    if (checkKeyDT() == false) return;
 
                     int mode;
 
@@ -281,7 +281,7 @@ namespace lab1
                         temporaryFile = bufferInstance.getAndDeleteFirst();
 
                         Algorithms.DoubleTranspositionCipher obj = new Algorithms.DoubleTranspositionCipher(ipermKey, jpermKey, temporaryFile, textBoxDestination.Text);
-                        obj.encDec(mode);
+                        obj.encryptionDecryption(mode);
                     }
                 }
             }

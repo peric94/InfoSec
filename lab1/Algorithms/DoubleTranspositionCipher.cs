@@ -90,83 +90,7 @@ namespace lab1.Algorithms
             return true;
         }
 
-        public bool encryptionDecryption(int mode) //mode = 0 za enkripciju, mode = 1 za dekripciju
-        {
-            if (mode != 0 && mode != 1) return false;
-            if (openAndReadTxt() == false) return false;
-
-            if(mode == 0)
-            parseData();
-            if (isKeyRequirementValid() == false) return false;
-
-            char[] arrayTemp = data.ToCharArray();
-            char[][] matTemp = new char[iperm.Length][];
-            
-            for(int i = 0; i < iperm.Length; i++)
-            {
-                matTemp[i] = new char[jperm.Length];
-            }
-
-            int k = 0;
-
-            for (int i = 0; i < iperm.Length; i++)
-            {
-                for(int j = 0; j < jperm.Length; j++)
-                {
-                    if (k > arrayTemp.Length - 1) break;
-                    matTemp[i][j] = arrayTemp[k];
-                    k++;
-                }
-            }
-
-            MatrixPermutation operation = new MatrixPermutation(iperm, jperm, matTemp);
-
-            if (mode == 0)
-            {
-                operation.ipermOperation();
-                operation.jpermOperation();
-            }
-            else
-            {
-                operation.jpermInverseOperation();
-                operation.ipermInverseOperation();
-            }
-
-            matTemp = operation.getMatrix();
-
-            arrayTemp = new char[iperm.Length * jperm.Length];
-
-            k = 0;
-
-            for (int i = 0; i < iperm.Length; i++)
-            {
-                for (int j = 0; j < jperm.Length; j++)
-                {
-                    arrayTemp[k] = matTemp[i][j];
-                    k++;
-                }
-            }
-
-            data = new string(arrayTemp);
-            //data = data.Replace("\0", string.Empty);
-
-            if(mode == 0)
-            {
-                if (saveToFile(".dtc") == false) return false;
-            }
-            else
-            {
-                data = data.Replace("\0", string.Empty);
-                if (saveToFile(".txt") == false)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        public bool encDec(int mode)
+        public bool encryptionDecryption(int mode)
         {
             if (mode != 0 && mode != 1) return false;
             if (openAndReadTxt() == false) return false;
@@ -202,20 +126,16 @@ namespace lab1.Algorithms
                     }
                 }
 
-                operation = new MatrixPermutation(iperm, jperm, matTemp);
-
                 if (mode == 0)
                 {
-                    operation.ipermOperation();
-                    operation.jpermOperation();
+                    matTemp = Algorithms.MatrixPermutation.rowPermutation(iperm, jperm.Length, matTemp);
+                    matTemp = Algorithms.MatrixPermutation.columnPermutation(iperm.Length, jperm, matTemp);
                 }
                 else
                 {
-                    operation.jpermInverseOperation();
-                    operation.ipermInverseOperation();
+                    matTemp = Algorithms.MatrixPermutation.columnPermutationInverse(iperm.Length, jperm, matTemp);
+                    matTemp = Algorithms.MatrixPermutation.rowPermutationInverse(iperm, jperm.Length, matTemp);
                 }
-
-                matTemp = operation.getMatrix();
 
                 arrayTemp = new char[iperm.Length * jperm.Length];
 
@@ -259,20 +179,16 @@ namespace lab1.Algorithms
                 }
             }
 
-            operation = new MatrixPermutation(iperm, jperm, matTemp);
-
             if (mode == 0)
             {
-                operation.ipermOperation();
-                operation.jpermOperation();
+                matTemp = Algorithms.MatrixPermutation.rowPermutation(iperm, jperm.Length, matTemp);
+                matTemp = Algorithms.MatrixPermutation.columnPermutation(iperm.Length, jperm, matTemp);
             }
             else
             {
-                operation.jpermInverseOperation();
-                operation.ipermInverseOperation();
+                matTemp = Algorithms.MatrixPermutation.columnPermutationInverse(iperm.Length, jperm, matTemp);
+                matTemp = Algorithms.MatrixPermutation.rowPermutationInverse(iperm, jperm.Length, matTemp);
             }
-
-            matTemp = operation.getMatrix();
 
             arrayTemp = new char[iperm.Length * jperm.Length];
 
