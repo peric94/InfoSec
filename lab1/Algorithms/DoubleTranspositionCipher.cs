@@ -100,7 +100,6 @@ namespace lab1.Algorithms
             char[][] matTemp;
             string buffer = string.Empty;
             int currentPosition = 0;
-            MatrixPermutation operation;
 
             int k;
 
@@ -128,13 +127,13 @@ namespace lab1.Algorithms
 
                 if (mode == 0)
                 {
-                    matTemp = Algorithms.MatrixPermutation.rowPermutation(iperm, jperm.Length, matTemp);
-                    matTemp = Algorithms.MatrixPermutation.columnPermutation(iperm.Length, jperm, matTemp);
+                    matTemp = Algorithms.PermutationsOnMatrix.rowPermutation(iperm, jperm.Length, matTemp);
+                    matTemp = Algorithms.PermutationsOnMatrix.columnPermutation(iperm.Length, jperm, matTemp);
                 }
                 else
                 {
-                    matTemp = Algorithms.MatrixPermutation.columnPermutationInverse(iperm.Length, jperm, matTemp);
-                    matTemp = Algorithms.MatrixPermutation.rowPermutationInverse(iperm, jperm.Length, matTemp);
+                    matTemp = Algorithms.PermutationsOnMatrix.columnPermutationInverse(iperm.Length, jperm, matTemp);
+                    matTemp = Algorithms.PermutationsOnMatrix.rowPermutationInverse(iperm, jperm.Length, matTemp);
                 }
 
                 arrayTemp = new char[iperm.Length * jperm.Length];
@@ -181,13 +180,13 @@ namespace lab1.Algorithms
 
             if (mode == 0)
             {
-                matTemp = Algorithms.MatrixPermutation.rowPermutation(iperm, jperm.Length, matTemp);
-                matTemp = Algorithms.MatrixPermutation.columnPermutation(iperm.Length, jperm, matTemp);
+                matTemp = Algorithms.PermutationsOnMatrix.rowPermutation(iperm, jperm.Length, matTemp);
+                matTemp = Algorithms.PermutationsOnMatrix.columnPermutation(iperm.Length, jperm, matTemp);
             }
             else
             {
-                matTemp = Algorithms.MatrixPermutation.columnPermutationInverse(iperm.Length, jperm, matTemp);
-                matTemp = Algorithms.MatrixPermutation.rowPermutationInverse(iperm, jperm.Length, matTemp);
+                matTemp = Algorithms.PermutationsOnMatrix.columnPermutationInverse(iperm.Length, jperm, matTemp);
+                matTemp = Algorithms.PermutationsOnMatrix.rowPermutationInverse(iperm, jperm.Length, matTemp);
             }
 
             arrayTemp = new char[iperm.Length * jperm.Length];

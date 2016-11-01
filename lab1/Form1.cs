@@ -26,6 +26,9 @@ namespace lab1
             MinimizeBox = false;
             StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
+
+            CipherA51 obj = new CipherA51("jedemsir", "C:\\Users\\Aleksandar\\Desktop\\destination\\lorem.jpg", "C:\\Users\\Aleksandar\\Desktop\\fak\\lorem.jpg");
+            obj.encryptionDecryption();
         }
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)

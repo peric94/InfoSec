@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab1.Algorithms
 {
-    class MatrixPermutation
+    class PermutationsOnMatrix
     {
         public static char[][] rowPermutation(int[] rowPerm, int numberOfColumns, char[][] mat)
         {
