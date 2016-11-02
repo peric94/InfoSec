@@ -94,7 +94,7 @@ namespace lab1.Algorithms
 
         public char MajorityVote()
         {
-            int sum = System.Convert.ToInt32(X.Register[8]) - 48;
+            int sum = System.Convert.ToInt32(X.Register[8]) - 48; //zasto sam morao da dodam ovo?!?!?!
             sum += System.Convert.ToInt32(Y.Register[10] - 48);
             sum += System.Convert.ToInt32(Z.Register[10] - 48);
 

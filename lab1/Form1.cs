@@ -27,8 +27,8 @@ namespace lab1
             StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
 
-            CipherA51 obj = new CipherA51("jedemsir", "C:\\Users\\Aleksandar\\Desktop\\destination\\lorem.jpg", "C:\\Users\\Aleksandar\\Desktop\\fak\\lorem.jpg");
-            obj.encryptionDecryption();
+            //CipherA51 obj = new CipherA51("jedemsir", "C:\\Users\\Aleksandar\\Desktop\\destination\\lorem.jpg", "C:\\Users\\Aleksandar\\Desktop\\fak\\lorem.jpg");
+            //obj.encryptionDecryption();
         }
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
@@ -256,6 +256,11 @@ namespace lab1
                 textBoxKey.Visible = true;
                 buttonSelectKey.Visible = true;
             }
+            if (comboBox.SelectedItem.ToString() == "A5/1")
+            {
+                textBoxAKey.Visible = true;
+                labelKey.Visible = true;
+            }
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -285,6 +290,26 @@ namespace lab1
 
                         Algorithms.DoubleTranspositionCipher obj = new Algorithms.DoubleTranspositionCipher(ipermKey, jpermKey, temporaryFile, textBoxDestination.Text);
                         obj.encryptionDecryption(mode);
+                    }
+                }
+                if(comboBox.SelectedItem.ToString() == "A5/1")
+                {
+                    while (bufferInstance.isEmpty() == false && stopped == false)
+                    {
+                        temporaryFile = bufferInstance.getAndDeleteFirst();
+
+                        string fileName = Path.GetFileName(temporaryFile);
+
+                        CipherA51 obj = new CipherA51(textBoxAKey.Text, temporaryFile, textBoxDestination.Text);
+
+                        if (fileName.Contains("protectedbyc1ph3r")) //mode 1 za dekripciju
+                        {
+                            obj.encryptionDecryption(1);
+                        }
+                        else //mode 0 za enkripciju
+                        {
+                            obj.encryptionDecryption(0);
+                        }
                     }
                 }
             }

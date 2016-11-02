@@ -42,20 +42,30 @@ namespace lab1
             return sb.ToString();
         }
 
-        public bool encryptionDecryption()
+        public bool encryptionDecryption(int mode)
         {
             if (checkKey() == false) return false;
 
             if (File.Exists(sourceFile))
             {
-               // string wtf = GetBits(key);
                 Algorithms.A51 cipher = new Algorithms.A51(GetBits(key));
                 string temp;
                 byte temp2;
 
                 using (BinaryReader reader = new BinaryReader(File.Open(sourceFile, FileMode.Open)))
                 {
-                    using (FileStream fileStream = new FileStream(destinationFile, FileMode.Create))
+                    string fileNameWithExtension = Path.GetFileName(sourceFile);
+
+                    if(mode == 0) // enkripcija
+                    {
+                        fileNameWithExtension = fileNameWithExtension.Insert(fileNameWithExtension.Length, "protectedbyc1ph3r");
+                    }
+                    else //dekripcija
+                    {
+                        fileNameWithExtension = fileNameWithExtension.Replace("protectedbyc1ph3r", string.Empty);
+                    }
+
+                    using (FileStream fileStream = new FileStream(destinationFile + "\\" + fileNameWithExtension, FileMode.Create))
                     {
                         while (reader.BaseStream.Position != reader.BaseStream.Length)
                         {

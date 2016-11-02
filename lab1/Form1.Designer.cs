@@ -45,6 +45,7 @@
             this.textBoxKey = new System.Windows.Forms.TextBox();
             this.labelKey = new System.Windows.Forms.Label();
             this.buttonSelectKey = new System.Windows.Forms.Button();
+            this.textBoxAKey = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,7 +128,8 @@
             // 
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Items.AddRange(new object[] {
-            "Double transposition"});
+            "Double transposition",
+            "A5/1"});
             this.comboBox.Location = new System.Drawing.Point(385, 18);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(121, 21);
@@ -199,11 +201,20 @@
             this.buttonSelectKey.Visible = false;
             this.buttonSelectKey.Click += new System.EventHandler(this.buttonSelectKey_Click);
             // 
+            // textBoxAKey
+            // 
+            this.textBoxAKey.Location = new System.Drawing.Point(289, 166);
+            this.textBoxAKey.Name = "textBoxAKey";
+            this.textBoxAKey.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAKey.TabIndex = 21;
+            this.textBoxAKey.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(521, 238);
+            this.Controls.Add(this.textBoxAKey);
             this.Controls.Add(this.buttonSelectKey);
             this.Controls.Add(this.labelKey);
             this.Controls.Add(this.textBoxKey);
@@ -246,6 +257,7 @@
         private System.Windows.Forms.Label labelKey;
         private System.Windows.Forms.TextBox textBoxKey;
         private System.Windows.Forms.Button buttonSelectKey;
+        private System.Windows.Forms.TextBox textBoxAKey;
     }
 }
 
