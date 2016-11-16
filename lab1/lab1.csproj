@@ -51,6 +51,7 @@
     <Compile Include="Algorithms\A51.cs" />
     <Compile Include="Algorithms\DoubleTranspositionCipher.cs" />
     <Compile Include="Algorithms\PermutationsOnMatrix.cs" />
+    <Compile Include="Algorithms\TEA.cs" />
     <Compile Include="CipherA51.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

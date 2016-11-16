@@ -29,6 +29,9 @@ namespace lab1
 
             //CipherA51 obj = new CipherA51("jedemsir", "C:\\Users\\Aleksandar\\Desktop\\destination\\lorem.jpg", "C:\\Users\\Aleksandar\\Desktop\\fak\\lorem.jpg");
             //obj.encryptionDecryption();
+
+            Algorithms.TEA obj = new Algorithms.TEA("aaaabbbbccccdddd", "C:\\Users\\Aleksandar\\Desktop\\source\\lorem.jpg");
+            obj.startEncryption();
         }
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
