@@ -129,7 +129,9 @@
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Items.AddRange(new object[] {
             "Double transposition",
-            "A5/1"});
+            "A5/1",
+            "TEA",
+            "TEA (with CBC)"});
             this.comboBox.Location = new System.Drawing.Point(385, 18);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(121, 21);
@@ -179,6 +181,7 @@
             this.textBoxKey.Size = new System.Drawing.Size(217, 20);
             this.textBoxKey.TabIndex = 17;
             this.textBoxKey.Visible = false;
+            this.textBoxKey.TextChanged += new System.EventHandler(this.textBoxKey_TextChanged);
             // 
             // labelKey
             // 
@@ -208,6 +211,7 @@
             this.textBoxAKey.Size = new System.Drawing.Size(100, 20);
             this.textBoxAKey.TabIndex = 21;
             this.textBoxAKey.Visible = false;
+            this.textBoxAKey.TextChanged += new System.EventHandler(this.textBoxAKey_TextChanged);
             // 
             // Form1
             // 

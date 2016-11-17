@@ -30,8 +30,6 @@ namespace lab1
             //CipherA51 obj = new CipherA51("jedemsir", "C:\\Users\\Aleksandar\\Desktop\\destination\\lorem.jpg", "C:\\Users\\Aleksandar\\Desktop\\fak\\lorem.jpg");
             //obj.encryptionDecryption();
 
-            Algorithms.TEA obj = new Algorithms.TEA("aaaabbbbccccdddd", "C:\\Users\\Aleksandar\\Desktop\\source\\lorem.jpg");
-            obj.startEncryption();
         }
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
@@ -264,6 +262,16 @@ namespace lab1
                 textBoxAKey.Visible = true;
                 labelKey.Visible = true;
             }
+            if (comboBox.SelectedItem.ToString() == "TEA")
+            {
+                textBoxAKey.Visible = true;
+                labelKey.Visible = true;
+            }
+            if(comboBox.SelectedItem.ToString() == "TEA (with CBC)")
+            {
+                textBoxAKey.Visible = true;
+                labelKey.Visible = true;
+            }
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -315,6 +323,39 @@ namespace lab1
                         }
                     }
                 }
+
+                if(comboBox.SelectedItem.ToString() == "TEA")
+                {
+                    while (bufferInstance.isEmpty() == false && stopped == false)
+                    {
+                        temporaryFile = bufferInstance.getAndDeleteFirst();
+                        Algorithms.TEA obj = new Algorithms.TEA(textBoxAKey.Text, temporaryFile, textBoxDestination.Text);
+                        if(checkBox.Checked == false)
+                        {
+                            obj.startEncryption(0);
+                        }
+                        else
+                        {
+                            obj.startDecryption(0);
+                        }
+                    }
+                }
+                if (comboBox.SelectedItem.ToString() == "TEA (with CBC)")
+                {
+                    while (bufferInstance.isEmpty() == false && stopped == false)
+                    {
+                        temporaryFile = bufferInstance.getAndDeleteFirst();
+                        Algorithms.TEA obj = new Algorithms.TEA(textBoxAKey.Text, temporaryFile, textBoxDestination.Text);
+                        if (checkBox.Checked == false)
+                        {
+                            obj.startEncryption(1);
+                        }
+                        else
+                        {
+                            obj.startDecryption(1);
+                        }
+                    }
+                }
             }
             catch { }
         }
@@ -326,6 +367,16 @@ namespace lab1
             {
                 bufferInstance.createdFile(temporaryFile);
             }
+        }
+
+        private void textBoxAKey_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxKey_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
